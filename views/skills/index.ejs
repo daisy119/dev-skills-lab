@@ -6,13 +6,13 @@
   <title>Express Dev skills</title>
 </head>
 <body>
-  <h1>Todos</h1>
+  <h1>Dev skills</h1>
   <ul>
-    <% todos.forEach(todo => { %>
+    <% skills.forEach(skill => { %>
       <li>
-				<%= todo.text %> 
+				<%= skill.text %> 
 				- 
-				<%= todo.done ? 'done' : 'not done' %>
+				<%= skill.done ? 'done' : 'not done' %>
 			</li>
     <% }) %>
   </ul>
