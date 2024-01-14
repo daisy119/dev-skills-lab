@@ -17,20 +17,25 @@ function index(req, res) {
 }
 
 
-async function index2(req,res) {
-  try {
-    const skills = await Skill.find({})
-    res.render('skills/index',{
-      skills: skills
+// async function index2(req,res) {
+//   try {
+//     const skills = await Skill.find({})
+//     res.render('skills/index',{
+//       skills: skills
 
-  })
-  } catch (error) {
-    console.log(error)
-    res.redirect('/')
-  }
+//   })
+//   } catch (error) {
+//     console.log(error)
+//     res.redirect('/')
+//   }
+// }
+
+function newskill(req,res) {
+  // console.log('waffles')
+    res.render('skills/new',)
 }
 
-
 export{
-  index
+  index,
+  newskill as new
 }
