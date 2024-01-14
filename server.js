@@ -20,6 +20,7 @@ app.set('view engine', 'ejs')
 // basic middleware
 app.use(logger('dev'))
 app.use(express.json())
+//process the form data-url encoded
 app.use(express.urlencoded({ extended: false }))
 app.use(
   express.static(
