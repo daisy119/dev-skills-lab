@@ -9,8 +9,8 @@ const skillSchema = new Schema({
 })
 
 // Compile the schema into a model and export it. Model is capitalized
-const Skill = mongoose.model('Skill', todoSchema)
+const Skill = mongoose.model('Skill', skillSchema)
 
 export {
-  Todo
+  Skill
 }
