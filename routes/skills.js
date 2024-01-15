@@ -8,8 +8,10 @@ const router = Router()
 router.get('/', skillsCtrl.index)
 // GET localhost:3000/skills/new
 router.get('/new', skillsCtrl.new)
-// GET localhost:3000/skills/:skillId  ||route parameter shold be at the bottom
+// GET localhost:3000/skills/:skillId  ||route parameter should be at the bottom
 router.get('/:skillId', skillsCtrl.show)
+// GET localhost:3000/skills/:skillId/edit  
+router.get('/:skillId/edit', skillsCtrl.edit)
 // GET localhost:3000/skills
 router.post('/',skillsCtrl.create)
 // Delete localhost:3000/skills/:skillsId

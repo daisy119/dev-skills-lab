@@ -18,7 +18,7 @@
         >
           <button type="submit">X</button>
         </form>
-        <button class="edit-button">✍️</button>
+        <a href="/skills/<%= skill._id %>/edit"><button class="edit-button">✍️</button></a>
 				<a href="/skills/<%= skill._id %>"><%= skill.text %></a>
 				- 
 				<%= skill.done ? 'done' : 'not done' %>

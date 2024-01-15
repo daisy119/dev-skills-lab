@@ -127,10 +127,26 @@ function deleteSkill(req,res) {
 //   })
 // }
 
+function edit(req,res) {
+  //find by id skills
+  //render ad form
+  Skill.findById(req.params.skillId)
+  .then(skill => {
+    res.render('skills/edit',{
+      skill: skill
+    })
+  })
+  .catch(err=>{
+    console.log(err)
+    res.redirect('/skills')
+  })
+}
+
 export{
   index,
   newSkill as new,
   create,
   show,
   deleteSkill as delete,
+  edit,
 }
