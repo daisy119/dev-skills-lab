@@ -7,7 +7,8 @@
 <body>
   <h1>Edit Dev Skill # <%= skill._id %></h1>
   <!-- action is the endpoint/routes, method is the http verb -->
-  <form action="/skills" method="POST" autocomplete="off">
+  <!-- html doesn't understand put, so the method = post -->
+  <form action="/skills/<%= skill._id %>?_method=PUT" method="POST" autocomplete="off">
     <input value="<%= skill.text %>" type="text" name="text">
     <input type="checkbox" <%= skill.done? 'checked': '' %> name="done">
     <button type="submit">Save Dev Skills</button>

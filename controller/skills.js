@@ -142,6 +142,26 @@ function edit(req,res) {
   })
 }
 
+function update(req,res) {
+  //done for checkbox show as on/off instead of true/false
+  // console.log('🚩',req.body)
+
+  // !! bang bang turn checkbox to true/false
+  req.body.done = !!req. body.done
+
+//{}option object new:true return the new promise obejct(skill)
+  Skill.findByIdAndUpdate(req.params.skillId,req.body,{new:true})
+  .then(skill => {
+    //inside ${} could aos be req.params.skillId
+    //same route as show controller
+    res.redirect(`/skills/${skill._id}`)
+  })
+  .catch(err=>{
+    console.log(err)
+    res.redirect('/skills')
+  })
+}
+
 export{
   index,
   newSkill as new,
@@ -149,4 +169,5 @@ export{
   show,
   deleteSkill as delete,
   edit,
+  update,
 }
