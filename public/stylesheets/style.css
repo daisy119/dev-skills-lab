@@ -12,8 +12,10 @@ a {
   margin-right: 10px;
 }
 	
-.delete-form button {
+.delete-form button, .edit-button {
   color: red;
+  width: 30px;
+  height: 30px;
 }
 	
 li {
