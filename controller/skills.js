@@ -64,8 +64,38 @@ function create(req,res) {
   
 // }
 
+function show(req,res) {
+  // console.log(req.params.skillId,'⬅️ 👀req.params.skillId')
+  // res.redirect('/skills')
+  //find the docment that matches the id
+  Skill.findById(req.params.skillId)
+  .then(skill =>{
+    res.render('skills/show',{
+      //name of the var :value of the var
+      skill: skill
+    })
+  })
+  .catch(error => { // If there's an error, console.log it and redirect back home!
+    console.log(error)
+    res.redirect('/')
+  })
+}
+
+// async function show1(req,res) {
+//   try{
+//     const skill = await Skill.findById(req.params.skillId)
+//     res.render('skills/show',{
+//       skill: skill
+//     })
+//   } catch(error) {
+//     console.log(error)
+//     res.redirect('/')
+//   }
+// }
+
 export{
   index,
   newskill as new,
-  create
+  create,
+  show
 }
