@@ -39,13 +39,30 @@ function newskill(req,res) {
 //post ->manipulate the databse to create a new skill
 function create(req,res) {
   // testing
-  // console.log(req.body)
+  console.log(req.body)
   // res.redirect('skills/new')
-  req.body.done=false
-  Skill.create(req.body).then(todo => {
+  req.body.done = false
+  Skill.create(req.body)
+  .then(todo => {
+    res.redirect('/skills')
+  })
+  .catch(error =>{
+    console.log(error)
     res.redirect('/skills')
   })
 }
+
+// async function create1(req,res) {
+//   try{
+//     req.body.done = false
+//     const newSkill = await Skill.create(req.body)
+//     res.redirect('/skills')
+//   } catch {
+//     console.log(error)
+//     res.redirect('/skills')
+//   }
+  
+// }
 
 export{
   index,
