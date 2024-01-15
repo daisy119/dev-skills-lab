@@ -1,13 +1,15 @@
 import { Skill } from '../models/skill.js'
 
-
+//--> display all
 //display a list of skills
 function index(req, res) {
   Skill.find({})
   //return skill
   .then(skills =>{
     res.render('skills/index',{
-      skills: skills
+      //key value pais in an object
+      skills: skills,
+      time: req.time
     }) 
   })
   .catch(error => { // If there's an error, console.log it and redirect back home!
@@ -30,8 +32,9 @@ function index(req, res) {
 //   }
 // }
 
+//-->create 
 //return an html form to create a new skill
-function newskill(req,res) {
+function newSkill(req,res) {
    // testing
   // console.log('waffles')
     res.render('skills/new',)
@@ -64,6 +67,7 @@ function create(req,res) {
   
 // }
 
+//-->show specific one
 function show(req,res) {
   // console.log(req.params.skillId,'⬅️ 👀req.params.skillId')
   // res.redirect('/skills')
@@ -93,9 +97,40 @@ function show(req,res) {
 //   }
 // }
 
+//-->delete 
+function deleteSkill(req,res) {
+  Skill.findByIdAndDelete(req.params.skillId)
+  .then(skill => {
+    res.redirect('/skills')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/skills')
+  })
+}
+
+// async function deleteSkill1(req,res) {
+//   try{
+//     await Skill.findByIdAndDelete(req.params.skillId)
+//     res.redirect('/skills')
+//   } catch(error) {
+//     console.log(error)
+//     res.redirect('/skills')
+//   }
+// }
+
+//using react for delete
+// function deleteSkill2(req,res) {
+//   Skill.findByIdAndDelete(req.params.skillId)
+//   .then(skill =>{
+//     res.json(skill)
+//   })
+// }
+
 export{
   index,
-  newskill as new,
+  newSkill as new,
   create,
-  show
+  show,
+  deleteSkill as delete,
 }

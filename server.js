@@ -5,6 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import createError from 'http-errors'
 import logger from 'morgan'
+import methodOverride from 'method-override'
 import './config/database.js'
 
 // import routers
@@ -17,7 +18,15 @@ const app = express()
 // view engine setup
 app.set('view engine', 'ejs')
 
-// basic middleware
+
+// basic middleware->manipulates request ->app.use()
+app.use(function(req,res,next){
+  // console.log("holidays")
+  //time is a make up property && customed middleware
+  req.time = new Date().toLocaleTimeString()
+  console.log(req.time)
+  next()
+})
 app.use(logger('dev'))
 app.use(express.json())
 //process the form data-url encoded
@@ -26,7 +35,8 @@ app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
-)
+)//_method ->look for query string
+app.use(methodOverride('_method'))  // add this
 
 // mount imported routes
 app.use('/', indexRouter)
